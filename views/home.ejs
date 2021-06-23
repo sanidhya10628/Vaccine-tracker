@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Welcome to Cowin App</h1>
+    <form action="/slots" method="POST">
+        <label for="">Select State:</label>
+        <select name="" id="dropdown" onchange="myfunc()">
+            <option value="select" id="select">Select</option>
+            <% for (let i of s) { %>
+                <option value="<%= i.state_id %>" id="<%= i.state_id %>">
+                    <%= i.state_name %>
+                </option>
+                <% } %>
+        </select>
+        <br>
+        <label for="">Select District:</label>
+        <select name="District" id="District">
+
+        </select>
+        <br>
+        <label for="date">Date</label>
+        <input type="date" name="date" id="date" min="2021-01-16" max="2022-12-31">
+        <button id="btn" type="submit">Check For Vaccine</button>
+    </form>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

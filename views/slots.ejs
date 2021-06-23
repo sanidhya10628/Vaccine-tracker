@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slots</title>
+</head>
+
+<body>
+    <h1>Here is the List of Available Slots</h1>
+    <hr>
+    <% for(let slot of slots) { %>
+        <div>
+            <p>
+                <span> <b> Name: </b>
+                    <%= slot.name %>
+                </span>
+                <br>
+                <span><b>Address:</b>
+                    <%= slot.address %>
+                </span>
+                <br>
+                <span><b>Pincode:</b>
+                    <%= slot.pincode %>
+                </span>
+                <br>
+            </p>
+            <p>
+                <span>Available Capacity :<%= slot.available_capacity %> </span><br>
+                <span>Dose 1: <%= slot.available_capacity_dose1 %> </span><br>
+                <span>Dose 2:<%= slot.available_capacity_dose2 %> </span><br>
+            </p>
+            <p>
+                <span>Cost : <%= slot.fee_type %> </span><br>
+                <span>Date : <%= slot.date %> </span><br>
+                <span>Minimum Age : <%= slot.min_age_limit %> </span><br>
+                <span>Vaccine : <%= slot.vaccine %> </span><br>
+            </p>
+        </div>
+        <hr>
+        <% } %>
+</body>
+
+</html>
