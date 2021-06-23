@@ -6,10 +6,36 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Slots</title>
+    <link rel="stylesheet" href="slots.css">
 </head>
 
 <body>
     <h1>Here is the List of Available Slots</h1>
+    <a href="/">Back to Search By District</a>
+    <a href="/pincode">Back to Search By PinCode</a>
+    <div class="filters">
+        <h3>Filters</h3>
+        <ul>
+            <button class="btn">
+                <li>All</li>
+            </button>
+            <button class="btn">
+                <li>COVISHIELD</li>
+            </button>
+            <button class="btn">
+                <li>COVAXIN</li>
+            </button>
+            <button class="btn">
+                <li>45+</li>
+            </button>
+            <button class="btn">
+                <li>Free</li>
+            </button>
+            <button class="btn">
+                <li>Paid</li>
+            </button>
+        </ul>
+    </div>
     <hr>
     <% for(let slot of slots) { %>
         <div>
@@ -28,19 +54,30 @@
                 <br>
             </p>
             <p>
-                <span>Available Capacity :<%= slot.available_capacity %> </span><br>
-                <span>Dose 1: <%= slot.available_capacity_dose1 %> </span><br>
-                <span>Dose 2:<%= slot.available_capacity_dose2 %> </span><br>
+                <span>Available Capacity :<b>
+                        <%= slot.available_capacity %>
+                    </b> </span><br>
+                <span>Dose 1: <b>
+                        <%= slot.available_capacity_dose1 %>
+                    </b></span><br>
+                <span>Dose 2: <b>
+                        <%= slot.available_capacity_dose2 %>
+                    </b> </span><br>
             </p>
             <p>
-                <span>Cost : <%= slot.fee_type %> </span><br>
+                <span class="<%= slot.fee_type %> ">Cost : <%= slot.fee_type %> </span><br>
                 <span>Date : <%= slot.date %> </span><br>
-                <span>Minimum Age : <%= slot.min_age_limit %> </span><br>
-                <span>Vaccine : <%= slot.vaccine %> </span><br>
+                <span class="<%= slot.min_age_limit %>">Minimum Age : <b>
+                        <%= slot.min_age_limit %>
+                    </b> </span><br>
+                <span class="<%= slot.vaccine %>"><b>Vaccine : <%= slot.vaccine %></b> </span><br>
             </p>
         </div>
         <hr>
         <% } %>
+
+
+            <script src="slots-app.js"></script>
 </body>
 
 </html>

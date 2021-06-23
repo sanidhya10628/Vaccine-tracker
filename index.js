@@ -50,6 +50,29 @@ app.post('/slots', async (req, res) => {
     // res.send(html);
 })
 
+
+app.get('/pincode', (req, res) => {
+
+    res.render('pincode')
+})
+
+app.post('/pincode', async (req, res) => {
+    const { pincode, date } = req.body;
+    // console.log(pincode, date)
+    const yyyy = date.slice(0, 4);
+    const mm = date.slice(5, 7);
+    const dd = date.slice(8, 10);
+
+    const newdate = `${dd}-${mm}-${yyyy}`
+    //api work
+    const responsedata = await fetch(`https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/findByPin?pincode=${pincode}&date=${newdate}`)
+
+    const json_data = await responsedata.json();
+    const slots = json_data['sessions'];
+    // console.log(data);
+    res.render('slots', { slots })
+})
+
 app.listen(8000, () => {
     console.log("On Port 8000");
 })

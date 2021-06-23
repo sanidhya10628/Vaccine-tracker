@@ -1,5 +1,4 @@
-// const { json } = require("express");
-
+'use strict'
 let x = 1;
 
 const request = new XMLHttpRequest();
