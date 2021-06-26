@@ -81,7 +81,7 @@ app.post('/pincode', async (req, res) => {
     const responsedata = await fetch(`https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/findByPin?pincode=${pincode}&date=${newdate}`)
 
     const json_data = await responsedata.json();
-    const slots = json_data['sessions'];
+    const slots = await json_data['sessions'];
     // console.log(data);
     res.render('slots', { slots, newdate })
 })
