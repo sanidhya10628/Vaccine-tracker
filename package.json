@@ -9,6 +9,10 @@
   },
   "keywords": [],
   "author": "",
+  "engines": {
+    "node": "7.10.0",
+    "npm": "4.2.0"
+  },
   "license": "ISC",
   "dependencies": {
     "axios": "^0.21.1",
