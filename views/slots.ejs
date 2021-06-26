@@ -6,14 +6,22 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Slots</title>
+    <link rel="stylesheet" href="bootstrap.min.css">
+    <script src="bootstrap.min.js"></script>
     <link rel="stylesheet" href="slots.css">
 </head>
 
 <body>
-    <h1>Here is the List of Available Slots</h1>
-    <a href="/">Back to Search By District</a>
-    <a href="/pincode">Back to Search By PinCode</a>
-    <div class="filters">
+    <div class="header">
+        <h1>List of Available Slots</h1>
+    </div>
+    <div class="fast">
+        <div class="btn-group btn-group-lg" role="group" aria-label="Basic example" id="btn1">
+            <a href="/" class="btn btn-warning">Back to Search By District</a>
+            <a href="/pincode" class="btn btn-warning">Back to Search By PinCode</a>
+        </div>
+    </div>
+    <!-- <div class="filters">
         <h3>Filters</h3>
         <ul>
             <button class="btn">
@@ -35,49 +43,80 @@
                 <li>Paid</li>
             </button>
         </ul>
-    </div>
+    </div> -->
     <hr>
-    <% for(let slot of slots) { %>
-        <div>
-            <p>
-                <span> <b> Name: </b>
-                    <%= slot.name %>
-                </span>
-                <br>
-                <span><b>Address:</b>
-                    <%= slot.address %>
-                </span>
-                <br>
-                <span><b>Pincode:</b>
-                    <%= slot.pincode %>
-                </span>
-                <br>
-            </p>
-            <p>
-                <span>Available Capacity :<b>
-                        <%= slot.available_capacity %>
-                    </b> </span><br>
-                <span>Dose 1: <b>
-                        <%= slot.available_capacity_dose1 %>
-                    </b></span><br>
-                <span>Dose 2: <b>
-                        <%= slot.available_capacity_dose2 %>
-                    </b> </span><br>
-            </p>
-            <p>
-                <span class="<%= slot.fee_type %> ">Cost : <%= slot.fee_type %> </span><br>
-                <span>Date : <%= slot.date %> </span><br>
-                <span class="<%= slot.min_age_limit %>">Minimum Age : <b>
-                        <%= slot.min_age_limit %>
-                    </b> </span><br>
-                <span class="<%= slot.vaccine %>"><b>Vaccine : <%= slot.vaccine %></b> </span><br>
-            </p>
+    <article>
+        <div class="table-responsive">
+            <table class="table" style="width: 100%;">
+                <thead>
+                    <tr>
+                        <th scope="col">S.No</th>
+                        <th scope="col">Address</th>
+                        <th scope="col">Available Capacity</th>
+                        <th scope="col"><b>
+                                <%= newdate %>
+                            </b></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% let cnt=1; %>
+                        <% for(let slot of slots) { %>
+                            <tr>
+                                <td scope="row" style="width: 3%">
+                                    <%= cnt %>
+                                </td>
+                                <td style="width: 50%">
+                                    <span><b>
+                                            <%= slot.name %>
+                                        </b></span>
+                                    <br>
+                                    <%= slot.address %>
+                                        <br>
+                                        <%= slot.pincode %>
+                                </td>
+                                <td style="width: 22%;">
+                                    <span>Available Capacity:
+                                        <b>
+                                            <%= slot.available_capacity %>
+                                        </b>
+                                    </span>
+                                    <br>
+                                    <span>Dose1 :
+                                        <b>
+                                            <%= slot.available_capacity_dose1 %>
+                                        </b>
+                                    </span>
+
+                                    <br>
+                                    <span>Dose2 :
+                                        <b>
+                                            <%= slot.available_capacity_dose2 %>
+                                        </b>
+                                    </span>
+                                </td>
+                                <td style="width: 25%;">
+                                    <span>Fee: <b>
+                                            <%= slot.fee_type %>
+                                        </b></span>
+                                    <br>
+                                    <span>Age:<b>
+
+                                            <%= slot.min_age_limit %>+
+                                        </b></span>
+                                    <br>
+                                    <span><span class="vaccine">Vaccine :</span> <b>
+                                            <%= slot.vaccine %>
+                                        </b></span>
+                                </td>
+                            </tr>
+                            <% cnt++; %>
+                                <% } %>
+                </tbody>
+            </table>
         </div>
-        <hr>
-        <% } %>
+    </article>
 
-
-            <script src="slots-app.js"></script>
+    <script src="slots-app.js"></script>
 </body>
 
 </html>

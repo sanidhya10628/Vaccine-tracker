@@ -6,20 +6,39 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Search By PinCode</title>
+    <link rel="stylesheet" href="bootstrap.min.css">
+    <script src="bootstrap.min.js"></script>
+    <link rel="stylesheet" href="pincode.css">
 </head>
 
 <body>
-    <h1>Welcome to Cowin App</h1>
+    <h1>Vaccine Tracker App</h1>
     <form action="/pincode" method="POST">
-        <label for="pincode">Search by PinCode</label>
-        <input type="number" name="pincode" id="pincode">
 
-        <label for="date">Date</label>
-        <input type="date" name="date" id="date">
-        <button type="submit">Search By PinCode</button>
+        <div class="input-group mb-3">
+            <span class="input-group-text" id="date" style="background-color: #20c997;">PinCode</span>
+            <input type="number" class="form-control" aria-label="Sizing example input"
+                aria-describedby="inputGroup-sizing-default" name="pincode" placeholder="Ex: 452000">
+        </div>
+
+
+        <div class="input-group mb-3">
+            <span class="input-group-text" id="date" style="background-color: #20c997;">Date</span>
+            <input type="date" class="form-control" aria-label="Sizing example input"
+                aria-describedby="inputGroup-sizing-default" name="date" id="date">
+        </div>
+        <!-- <label for="pincode">Search by PinCode</label>
+        <input type="number" name="pincode" id="pincode"> -->
+
+        <!-- <label for="date">Date</label>
+        <input type="date" name="date" id="date"> -->
+        <center><button class="btn btn-danger" type="submit" id="submitbtn">Search For Vaccine</button></center>
+
     </form>
 
-    <a href="/">Search by District</a>
+
+    <center><a href="/" class="btn btn-primary" id="searchbtn">Search by District</a></center>
+
 </body>
 
 </html>

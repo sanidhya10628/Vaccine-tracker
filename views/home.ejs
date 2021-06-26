@@ -6,31 +6,48 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="bootstrap.min.css">
+    <script src="bootstrap.min.js"></script>
+    <link rel="stylesheet" href="home.css">
 </head>
 
 <body>
-    <h1>Welcome to Cowin App</h1>
+    <h1>Vaccine Tracker App</h1>
     <form action="/slots" method="POST">
-        <label for="">Select State:</label>
-        <select name="" id="dropdown" onchange="myfunc()">
-            <option value="select" id="select">Select</option>
-            <% for (let i of s) { %>
-                <option value="<%= i.state_id %>" id="<%= i.state_id %>">
-                    <%= i.state_name %>
-                </option>
-                <% } %>
-        </select>
-        <br>
-        <label for="">Select District:</label>
-        <select name="District" id="District">
 
-        </select>
-        <br>
-        <label for="date">Date</label>
-        <input type="date" name="date" id="date" min="2021-01-16" max="2022-12-31">
-        <button id="btn" type="submit">Check For Vaccine</button>
+
+        <!-- <label for=""></label> -->
+
+        <div class="input-group mb-3">
+            <label class="input-group-text" for="" style="background-color: #20c997;">Select State:</label>
+            <select class="form-select" id="dropdown" onchange="myfunc()">
+                <% for (let i of s) { %>
+                    <option value="<%= i.state_id %>" id="<%= i.state_id %>">
+                        <%= i.state_name %>
+                    </option>
+                    <% } %>
+            </select>
+        </div>
+
+
+        <div class="input-group mb-3">
+            <label class="input-group-text" for="" style="background-color: #20c997;">Select District:</label>
+            <select class="form-select" name="District" id="District">
+
+            </select>
+        </div>
+
+
+        <div class="input-group mb-3">
+            <span class="input-group-text" id="date" style="background-color: #20c997;">Date</span>
+            <input type="date" class="form-control" aria-label="Sizing example input"
+                aria-describedby="inputGroup-sizing-default" name="date">
+        </div>
+
+        <center><button class="btn btn-danger" type="submit" id="submitbtn">Search For Vaccine</button></center>
+        <center><a href="/pincode" class="btn btn-primary" id="searchbtn">Search By PinCode</a></center>
     </form>
-    <a href="/pincode">Search By PinCode</a>
+
     <script src="script.js"></script>
 </body>
 

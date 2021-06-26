@@ -44,7 +44,7 @@ app.post('/slots', async (req, res) => {
     const slots = nd['sessions']
     // console.log(fin);
     // console.log(slots)
-    res.render('slots', { slots });
+    res.render('slots', { slots, newdate });
 
     // res.send(await ejs.renderFile(, slots, { async: true }))
     // res.send(html);
@@ -70,7 +70,7 @@ app.post('/pincode', async (req, res) => {
     const json_data = await responsedata.json();
     const slots = json_data['sessions'];
     // console.log(data);
-    res.render('slots', { slots })
+    res.render('slots', { slots, newdate })
 })
 
 app.listen(8000, () => {
