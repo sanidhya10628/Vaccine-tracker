@@ -60,52 +60,52 @@
                 </thead>
                 <tbody>
                     <% let cnt=1; %>
-                        <% for(let slot=0;slot<slots.length;slot++) { %>
+                        <% for(let i=0;i<slots.length;i++) { %>
                             <tr>
                                 <td scope="row" style="width: 3%">
                                     <%= cnt %>
                                 </td>
                                 <td style="width: 50%">
                                     <span><b>
-                                            <%= slot.name %>
+                                            <%= slots[i].name %>
                                         </b></span>
                                     <br>
-                                    <%= slot.address %>
+                                    <%= slots[i].address %>
                                         <br>
-                                        <%= slot.pincode %>
+                                        <%= slots[i].pincode %>
                                 </td>
                                 <td style="width: 22%;">
                                     <span>Available Capacity:
                                         <b>
-                                            <%= slot.available_capacity %>
+                                            <%= slots[i].available_capacity %>
                                         </b>
                                     </span>
                                     <br>
                                     <span>Dose1 :
                                         <b>
-                                            <%= slot.available_capacity_dose1 %>
+                                            <%= slots[i].available_capacity_dose1 %>
                                         </b>
                                     </span>
 
                                     <br>
                                     <span>Dose2 :
                                         <b>
-                                            <%= slot.available_capacity_dose2 %>
+                                            <%= slots[i].available_capacity_dose2 %>
                                         </b>
                                     </span>
                                 </td>
                                 <td style="width: 25%;">
                                     <span>Fee: <b>
-                                            <%= slot.fee_type %>
+                                            <%= slots[i].fee_type %>
                                         </b></span>
                                     <br>
                                     <span>Age:<b>
 
-                                            <%= slot.min_age_limit %>+
+                                            <%= slots[i].min_age_limit %>+
                                         </b></span>
                                     <br>
                                     <span><span class="vaccine">Vaccine :</span> <b>
-                                            <%= slot.vaccine %>
+                                            <%= slots[i].vaccine %>
                                         </b></span>
                                 </td>
                             </tr>
