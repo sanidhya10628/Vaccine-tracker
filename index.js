@@ -29,7 +29,7 @@ app.get('/', (req, res) => {
 
 
 
-app.post('/slots', async (req, res) => {
+app.post('/slots', (req, res) => {
     const { District, date } = req.body;
     // console.log(data);
     // date yyyy mm dd
@@ -38,12 +38,23 @@ app.post('/slots', async (req, res) => {
     const dd = date.slice(8, 10);
 
     const newdate = `${dd}-${mm}-${yyyy}`
-    const data = await fetch(`https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/findByDistrict?district_id=${District}&date=${newdate}`);
+    // const data = await fetch(`https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/findByDistrict?district_id=${District}&date=${newdate}`);
 
-    const nd = await data.json();
-    const slots = nd['sessions']
+    // const nd = await data.json();
+    // const slot = nd['sessions']
     // console.log(fin);
     // console.log(slots)
+    const slots = [{
+        name: "Sanidhya",
+        address: "Rohit",
+        pincode: "452005",
+        available_capacity: 20,
+        available_capacity_dose1: 42,
+        available_capacity_dose2: 22,
+        fee_type: "free",
+        min_age_limit: 18,
+        vaccine: "Covisheild"
+    }]
     res.render('slots', { slots });
 
     // res.send(await ejs.renderFile(, slots, { async: true }))
