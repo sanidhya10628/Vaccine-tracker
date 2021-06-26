@@ -41,8 +41,8 @@ app.post('/slots', async (req, res) => {
 
         // let slots = JSON.parse(data.data);
 
-        const nd = await data.json();
-        const slots = nd.sessions;
+        const slots = await data.json();
+        // const slots = nd.sessions;
         // console.log(nd)
         // const slots = nd['sessions']
         // console.log(fin);
