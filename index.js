@@ -37,11 +37,13 @@ app.post('/slots', async (req, res) => {
         const dd = date.slice(8, 10);
 
         const newdate = `${dd}-${mm}-${yyyy}`
-        const data = await axios.get(`https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/findByDistrict?district_id=${District}&date=${newdate}`);
-        let slots = data.data.sessions;
+        const data = await fetch(`https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/findByDistrict?district_id=${District}&date=${newdate}`);
+
         // let slots = JSON.parse(data.data);
 
-        // const nd = await data.json();
+        const nd = await data.json();
+        const slots = nd.sessions;
+        // console.log(nd)
         // const slots = nd['sessions']
         // console.log(fin);
         // console.log(slots)
