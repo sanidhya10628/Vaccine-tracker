@@ -44,7 +44,7 @@ app.post('/slots', async (req, res) => {
     const slots = nd['sessions']
     // console.log(fin);
     // console.log(slots)
-    res.render('slots', { slots, newdate });
+    res.render('slots', { slots });
 
     // res.send(await ejs.renderFile(, slots, { async: true }))
     // res.send(html);
