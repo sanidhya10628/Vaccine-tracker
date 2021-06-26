@@ -60,7 +60,7 @@ app.post('/slots', async (req, res) => {
     }
     catch (err) {
         console.log(err);
-        res.redirect('/');
+        res.send(err);
     }
 
     // res.send(await ejs.renderFile(, slots, { async: true }))
