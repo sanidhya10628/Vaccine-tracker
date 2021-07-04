@@ -47,7 +47,8 @@ app.get('/slots', (req, res) => {
 
             const slots = response.body.sessions;
             // res.send({ slots })
-            res.render('slots', { slots })
+            // res.render('slots', { slots })
+            res.send({ slots })
 
         })
         // console.log(slots)
