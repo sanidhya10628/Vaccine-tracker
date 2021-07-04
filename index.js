@@ -1,9 +1,8 @@
 const express = require('express');
 const app = express();
 const path = require('path');
-const fetch = require('node-fetch');
 const ejs = require('ejs');
-const axios = require('axios')
+const request = require('request');
 app.use(express.static(path.join(__dirname, 'public')));
 
 
@@ -29,36 +28,30 @@ app.get('/', (req, res) => {
 
 
 
-app.post('/slots', async (req, res) => {
+app.get('/slots', (req, res) => {
     try {
-        const { District, date } = req.body;
+        // const { District, date } = req.body;
+        const District = req.query.District;
+        const date = req.query.date;
         const yyyy = date.slice(0, 4);
         const mm = date.slice(5, 7);
         const dd = date.slice(8, 10);
 
         const newdate = `${dd}-${mm}-${yyyy}`
-        const data = await fetch(`https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/findByDistrict?district_id=${District}&date=${newdate}`);
+        const url = `https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/findByDistrict?district_id=${District}&date=${newdate}`;
 
-        // let slots = JSON.parse(data.data);
+        request({ url: url, json: true }, (error, response) => {
+            if (error) {
+                return res.send({ error });
+            }
 
-        const slots = await data.json();
-        // const slots = nd.sessions;
-        // console.log(nd)
-        // const slots = nd['sessions']
-        // console.log(fin);
+            const slots = response.body.sessions;
+            // res.send({ slots })
+            res.render('slots', { slots })
+
+        })
         // console.log(slots)
-        // const slots = [{
-        //     name: "Sanidhya",
-        //     address: "Rohit",
-        //     pincode: "452005",
-        //     available_capacity: 20,
-        //     available_capacity_dose1: 42,
-        //     available_capacity_dose2: 22,
-        //     fee_type: "free",
-        //     min_age_limit: 18,
-        //     vaccine: "Covisheild"
-        // }]
-        res.render('slots', { slots });
+        // res.send(slots);
     }
     catch (err) {
         console.log(err);
@@ -70,30 +63,39 @@ app.post('/slots', async (req, res) => {
 })
 
 
-app.get('/pincode', (req, res) => {
+app.get('/pin', (req, res) => {
 
     res.render('pincode')
 })
 
-app.post('/pincode', async (req, res) => {
-    const { pincode, date } = req.body;
+app.get('/pincode', (req, res) => {
+    // const { pincode, date } = req.body;
+    const pincode = req.query.pincode;
+    const date = req.query.date;
     // console.log(pincode, date)
     const yyyy = date.slice(0, 4);
     const mm = date.slice(5, 7);
     const dd = date.slice(8, 10);
 
-    const newdate = `${dd}-${mm}-${yyyy}`
-    //api work
-    const responsedata = await fetch(`https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/findByPin?pincode=${pincode}&date=${newdate}`)
+    const newdate = `${dd}-${mm}-${yyyy}`;
 
-    const json_data = await responsedata.json();
-    const slots = await json_data['sessions'];
-    // console.log(data);
-    res.render('slots', { slots, newdate })
+    //api work
+    const url = `https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/findByPin?pincode=${pincode}&date=${newdate}`;
+
+    request({ url: url, json: true }, (error, response) => {
+        if (error) {
+            return res.send({ error });
+        }
+
+        const slots = response.body.sessions;
+        // res.send({ slots })
+        res.render('slots', { slots })
+
+    })
 })
 
 
 const PORT = process.env.PORT || 8000;
 app.listen(PORT, () => {
-    // console.log("On Port 8000");
+    console.log("On Port 8000");
 })

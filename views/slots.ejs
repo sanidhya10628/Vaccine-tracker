@@ -13,7 +13,6 @@
 
 <body>
 
-
     <div class="header">
         <h1>List of Available Slots</h1>
     </div>
@@ -23,29 +22,7 @@
             <a href="/pincode" class="btn btn-warning">Back to Search By PinCode</a>
         </div>
     </div>
-    <!-- <div class="filters">
-        <h3>Filters</h3>
-        <ul>
-            <button class="btn">
-                <li>All</li>
-            </button>
-            <button class="btn">
-                <li>COVISHIELD</li>
-            </button>
-            <button class="btn">
-                <li>COVAXIN</li>
-            </button>
-            <button class="btn">
-                <li>45+</li>
-            </button>
-            <button class="btn">
-                <li>Free</li>
-            </button>
-            <button class="btn">
-                <li>Paid</li>
-            </button>
-        </ul>
-    </div> -->
+
     <hr>
     <article>
         <div class="table-responsive">
@@ -62,52 +39,52 @@
                 </thead>
                 <tbody>
                     <% let cnt=1; %>
-                        <% for(let i=0;i<slots.sessions.length;i++) { %>
+                        <% for(let i=0;i<slots.length;i++) { %>
                             <tr>
                                 <td scope="row" style="width: 3%">
                                     <%= cnt %>
                                 </td>
                                 <td style="width: 50%">
                                     <span><b>
-                                            <%= slots.sessions[i].name %>
+                                            <%= slots[i].name %>
                                         </b></span>
                                     <br>
-                                    <%= JSON.stringify(slots.sessions[i].address) %>
+                                    <%= slots[i].address %>
                                         <br>
-                                        <%= JSON.stringify(slots.sessions[i].pincode) %>
+                                        <%= slots[i].pincode %>
                                 </td>
                                 <td style="width: 22%;">
                                     <span>Available Capacity:
                                         <b>
-                                            <%= JSON.stringify(slots.sessions[i].available_capacity) %>
+                                            <%= slots[i].available_capacity %>
                                         </b>
                                     </span>
                                     <br>
                                     <span>Dose1 :
                                         <b>
-                                            <%= JSON.stringify(slots.sessions[i].available_capacity_dose1) %>
+                                            <%= slots[i].available_capacity_dose1 %>
                                         </b>
                                     </span>
 
                                     <br>
                                     <span>Dose2 :
                                         <b>
-                                            <%= JSON.stringify(slots.sessions[i].available_capacity_dose2) %>
+                                            <%= slots[i].available_capacity_dose2 %>
                                         </b>
                                     </span>
                                 </td>
                                 <td style="width: 25%;">
                                     <span>Fee: <b>
-                                            <%= JSON.stringify(slots.sessions[i].fee_type) %>
+                                            <%= slots[i].fee_type %>
                                         </b></span>
                                     <br>
                                     <span>Age:<b>
 
-                                            <%= JSON.stringify(slots.sessions[i].min_age_limit) %>+
+                                            <%= slots[i].min_age_limit %>+
                                         </b></span>
                                     <br>
                                     <span><span class="vaccine">Vaccine :</span> <b>
-                                            <%= JSON.stringify(slots.sessions[i].vaccine) %>
+                                            <%= slots[i].vaccine %>
                                         </b></span>
                                 </td>
                             </tr>
